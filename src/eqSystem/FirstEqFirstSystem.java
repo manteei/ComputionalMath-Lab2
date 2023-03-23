@@ -1,7 +1,7 @@
 package eqSystem;
 
 
-public class FirstEquationFromSystem implements EquationFromSystem {
+public class FirstEqFirstSystem implements EquationFromSystem {
 
 
     @Override
@@ -19,18 +19,4 @@ public class FirstEquationFromSystem implements EquationFromSystem {
         return 2 * y;
     }
 
-    @Override
-    public String showEquation() {
-        return "x^2 + y^2 = 4";
-    }
-
-    @Override
-    public String showDerivativeX() {
-        return "2*x";
-    }
-
-    @Override
-    public String showDerivativeY() {
-        return "2*y";
-    }
 }

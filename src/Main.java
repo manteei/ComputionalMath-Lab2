@@ -8,18 +8,18 @@ public class Main {
         Output output = new Output();
         boolean isSystem = input.chooseType();
         if (isSystem){
-            System.out.println("");
+            EqSystem.printAllSystems();
         }else {
             EqCollection.printEqCollection();
         }
         int num = input.getNumber(isSystem);
         double[] aprox = input.getApproximation();
         double eps = input.getEpsilon();
-        Equation equation = new Equation(num,aprox);
         if (isSystem) {
-            aprox = new double[]{1, 2};
-            output.printEqSystemResult(EqSystem.newtoneMethodSystemRunner(aprox));
+            EqSystem.choseSystem(num);
+            output.printEqSystemResult(EqSystem.SystemCalculator(aprox, eps));
         }else {
+            Equation equation = new Equation(num,aprox);
             output.printEquationResult(equation.methodChord( eps), equation.methodTangent(eps));
         }
     }

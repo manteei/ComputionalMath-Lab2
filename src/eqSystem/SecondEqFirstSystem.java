@@ -1,7 +1,7 @@
 package eqSystem;
 
 
-public class SecondEquationFromSystem implements EquationFromSystem {
+public class SecondEqFirstSystem implements EquationFromSystem {
 
     @Override
     public double getEquation(double x, double y) {
@@ -16,20 +16,5 @@ public class SecondEquationFromSystem implements EquationFromSystem {
     @Override
     public double getDerivativeY(double x, double y) {
         return 1;
-    }
-
-    @Override
-    public String showEquation() {
-        return "y = 3 * x^2";
-    }
-
-    @Override
-    public String showDerivativeX() {
-        return "-6*x";
-    }
-
-    @Override
-    public String showDerivativeY() {
-        return "1";
     }
 }

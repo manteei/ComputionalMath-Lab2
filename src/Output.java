@@ -13,7 +13,7 @@ public class Output {
         System.out.println("------------------------------------------------------------------------------");
         System.out.println("Результат решения системы уравнений методом Ньютона: ");
         System.out.println("X = " + result[0]);
-        System.out.println("Y =  " + result[1]);
+        System.out.println("Y = " + result[1]);
         System.out.println("------------------------------------------------------------------------------");
     }
 

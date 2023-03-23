@@ -7,10 +7,4 @@ public interface EquationFromSystem {
     double getDerivativeX(double x, double y);
 
     double getDerivativeY(double x, double y);
-
-    String showEquation();
-
-    String showDerivativeX();
-
-    String showDerivativeY();
 }

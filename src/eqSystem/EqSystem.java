@@ -3,8 +3,18 @@ package eqSystem;
 import java.util.Arrays;
 
 public class EqSystem {
-    public static EquationFromSystem eq1 = new FirstEquationFromSystem();
-    public static EquationFromSystem eq2 = new SecondEquationFromSystem();
+    public static EquationFromSystem eq1;
+    public static EquationFromSystem eq2;
+
+    public static void choseSystem(int n) {
+        if (n==1) {
+             eq1 = new FirstEqFirstSystem();
+             eq2 = new SecondEqFirstSystem();
+        }else {
+             eq1 = new FirstEqSecondSystem();
+             eq2 = new SecondEqSecondSystem();
+        }
+    }
 
 
     public static double[][] df(double[] vector) {
@@ -23,18 +33,16 @@ public class EqSystem {
         return f;
     }
 
-    public static  double[]  newtoneMethodSystemRunner( double[] results) {
-        double e = 0.001;
-        double[] lastResults = {results[0] + 2 * e, results[1] + 2 * e};
-        double[][] jacobi;
+    public static  double[] SystemCalculator(double[] results, double eps) {
+        double[] lastResults = {results[0] + 2 * eps, results[1] + 2 * eps};
+        double[][] jacobian;
         double[] f;
-        int i = 1;
         double[] deltas;
-        while (Math.abs(results[0] - lastResults[0]) > e || Math.abs(results[1] - lastResults[1]) > e) {
+        while (isEps(results[0], lastResults[0], eps) || isEps(results[1], lastResults[1], eps)) {
             lastResults = Arrays.copyOf(results, results.length);
-            jacobi = df(lastResults);
+            jacobian = df(lastResults);
             f = F(lastResults);
-            deltas = getUnknownColumn(jacobi, f);
+            deltas = getUnknownColumn(jacobian, f);
             results[0] = results[0] + deltas[0];
             results[1] = results[1] + deltas[1];
         }
@@ -107,5 +115,16 @@ public class EqSystem {
     public static boolean isnNullRow(double[] row) {
         return Arrays.stream(row)
                 .allMatch(el -> el == 0);
+    }
+
+    public static void printAllSystems(){
+        System.out.println("1) x^2 + y^2 = 4");
+        System.out.println("   y = 3 * x^2");
+        System.out.println("2) x^3 + 4y = 0 ");
+        System.out.println("   x^2 + y^2 = 12");
+    }
+    private static boolean isEps(double current, double previous, double eps){
+        return Math.abs(current - previous) > eps;
+
     }
 }
